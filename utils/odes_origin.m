@@ -14,7 +14,7 @@ function [ Aim, Condim, Xt_im_fits ] = odes_origin(t, Xt, tspan, solver)
 
 %% discrete integral transformation
 h = diff(t); 
-Yt = h .* [1 1] .* cumsum(Xt(1:nobs-1,:)+Xt(2:nobs,:))/2;
+Yt = [h h] .* cumsum(Xt(1:nobs-1,:)+Xt(2:nobs,:))/2;
 
 %% parameter estimation: two column with two regression 
 Const = ones(nobs-1,1);
