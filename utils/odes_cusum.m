@@ -13,7 +13,7 @@ function [ Agm, Cgm, Condgm, Xt_fits ] = odes_cusum(t, Xt, tspan, solver)
 [nobs, nsta] = size(Xt);                    % size of Xt
 %% cumulative sum
 h = [1; diff(t)]; 
-Yt =  cumsum(h.*[1 1].*Xt);
+Yt =  cumsum([h h].*Xt);
 
 %% parameter estimation: two column with two regression 
 Const = ones(nobs-1,1);
